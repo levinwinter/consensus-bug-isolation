@@ -1,20 +1,24 @@
-from _ast import Call, Constant, If, Name
 import ast
-from typing import Any
+
+
+def predicate(name, value):
+    args = [value,
+            ast.Constant(ast.unparse(value)),
+            ast.Constant(value.lineno)]
+    return ast.Call(ast.Name(id=name, ctx=ast.Load()), args, keywords=[])
+
 
 class Instrument(ast.NodeTransformer):
-    def visit_If(self, node: If) -> Any:
-        name = ast.unparse(node.test)
+    def visit_If(self, node: ast.If) -> ast.AST:
         test = node.test
-        func = ast.Name(id = 'pred_branch', ctx = ast.Load())
-        node.test = ast.Call(func = func, args = [test, ast.Constant(value = name), ast.Constant(node.lineno)], keywords = [])
+        node.test = predicate('pred_branch', test)
         super().generic_visit(test)
         return node
-    
-    def visit_Call(self, node: Call) -> Any:
-        name = ast.unparse(node)
+
+    def visit_Call(self, node: ast.Call) -> ast.AST:
         super().generic_visit(node)
-        return ast.Call(func = ast.Name(id = 'pred_returns', ctx = ast.Load()), args = [node, ast.Constant(value = name), ast.Constant(value = node.lineno)], keywords = [])
+        return predicate('pred_returns', node)
+
 
 def add_predicates(module: ast.Module):
     with open('predicates.py', 'r') as file:
@@ -22,10 +26,11 @@ def add_predicates(module: ast.Module):
         module.body = tree.body + module.body
         return module
 
-def instrument(file):
-    with open(file, 'r') as file:
-        tree = ast.parse(file.read())
-        Instrument().visit(tree)
-        add_predicates(tree)  # add predicates after instrumentation
-        ast.fix_missing_locations(tree)
-        return ast.unparse(tree)
+
+def instrument(script):
+    tree = ast.parse(script)
+    Instrument().visit(tree)
+    # add predicates after instrumentation to not instrument predicates
+    add_predicates(tree)
+    ast.fix_missing_locations(tree)
+    return ast.unparse(tree)

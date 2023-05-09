@@ -1,4 +1,3 @@
-import os
 import sys
 import tempfile
 import subprocess
@@ -11,22 +10,16 @@ if len(sys.argv) < 3:
     print("expected:", sys.argv[0], "#iterations", "path/to/script")
     exit(1)
 
-iterations = int(sys.argv[1])
-script = sys.argv[2]
+with open(sys.argv[2], 'r') as script:
+    temp = tempfile.NamedTemporaryFile()
+    temp.write(str.encode(instrument(script.read())))
+    temp.flush()
 
 reports = []
 
-temp = tempfile.NamedTemporaryFile()
-temp.write(str.encode(instrument(script)))
-temp.flush()
-
-# print(instrument(script))
-
-for i in range(iterations):
-    cmd = subprocess.run(["python3", temp.name], capture_output = True)
+for _ in range(int(sys.argv[1])):  # iterations
+    cmd = subprocess.run(["python3", temp.name], capture_output=True)
     output = cmd.stdout.decode().splitlines()
-
-    # print(cmd.stderr.decode())
 
     observations = {}
     for line in output:
