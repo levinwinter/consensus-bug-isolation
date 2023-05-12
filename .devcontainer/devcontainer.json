@@ -11,7 +11,11 @@
 			"installMaven": "true",
 			"installGradle": "false"
 		}
-	}
+	},
+
+	"mounts": [
+		"source=/Users/levin/Downloads/traces,target=/traces,type=bind,consistency=cached,readonly"
+	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
