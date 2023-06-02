@@ -156,7 +156,7 @@ public class DataStreamJob {
 				})
 				.build();
 
-		String dir = "/traces/buggy-7-0-0-6-small-scope-0.2.4";
+		String dir = "/traces/buggy-7-2-0-6-small-scope-0.2.4";
 		// String dir = "/workspaces/consensus-bug-isolation/traces";
 		List<String> paths = new ArrayList<>();
 		for (String runPath : new File(dir).list()) {
@@ -171,7 +171,10 @@ public class DataStreamJob {
 			public void processElement(String value, ProcessFunction<String, Tuple2<String, String>>.Context arg1,
 					org.apache.flink.util.Collector<Tuple2<String, String>> out) throws Exception {
 				try (Stream<String> stream = Files.lines(Paths.get(value, "execution.txt"))) {
-					stream.forEach(line -> out.collect(Tuple2.of(new Path(value).getName(), line)));
+					stream.forEach(line -> {
+						if (line.contains("Validation ")) out.collect(Tuple2.of(new Path(value).getName(), Utils.sendToSelf(line)));
+						out.collect(Tuple2.of(new Path(value).getName(), line));
+					});
 				}
 			}
 		}
@@ -201,8 +204,9 @@ public class DataStreamJob {
 				.returns(new TypeHint<Tuple2<String, String>>() {
 				})
 				// .keyBy(pair -> pair.f0)
-				.filter(line -> line.f1.startsWith("--")
+				.filter(line -> (line.f1.startsWith("--")
 						|| (!line.f1.contains("Validation") && !line.f1.contains("ProposeSet")))
+						&& Utils.to(line.f1) != 3)
 				.map(line -> Tuple2.of(line.f0, line.f1.startsWith("--") ? line.f1.substring(3) : line.f1))
 				.returns(new TypeHint<Tuple2<String, String>>() {
 				})
@@ -252,8 +256,9 @@ public class DataStreamJob {
 
 		// result.sinkTo(sink);
 
-		Predicate p1 = new Predicate("Validation", "Validation", (pair) -> Utils.seq(pair.f0) + 1 == Utils.seq(pair.f1),
-				"Validation seq -- +1, >3 --> Validation seq", 4);
+		// Predicate p1 = new Predicate("Validation", "Validation", (pair) -> Utils.seq(pair.f0) + 1 == Utils.seq(pair.f1),
+		// 		"Validation seq -- +1, >3 --> Validation seq", 4);
+		IncompatibleLedgerPredicate p1 = new IncompatibleLedgerPredicate();
 		p1.apply(stream
 		.keyBy(new KeySelector<Tuple2<String,String>,Tuple2<String, Integer>>() {
 
@@ -446,7 +451,7 @@ public class DataStreamJob {
 				time.update(ctx.timestamp());
 			} else if (ctx.timestamp() - time.value() > (15 * 1000)) {
 				drop.update(false);
-				System.out.println("error:" + elem);
+				// System.out.println("error:" + elem);
 				out.collect(elem);
 			} else {
 				time.update(ctx.timestamp());
