@@ -156,12 +156,13 @@ public class DataStreamJob {
 				})
 				.build();
 
-		String dir = "/traces/buggy-7-2-0-6-small-scope-0.2.4";
+		String dir = "/workspaces/experiments/ConsensusTesting/traces/v0.2.7/buggy-7-1-1-6-small-scope";
 		// String dir = "/workspaces/consensus-bug-isolation/traces";
 		List<String> paths = new ArrayList<>();
 		for (String runPath : new File(dir).list()) {
 			if (runPath.startsWith("."))
 				continue;
+			System.out.println(new Path(dir, runPath).toString());
 			paths.add(new Path(dir, runPath).toString());
 		}
 
@@ -182,35 +183,34 @@ public class DataStreamJob {
 		DataStream<Tuple2<String, String>> stream = env
 				.fromCollection(paths)
 				.process(new MyFlatMap())
-				.assignTimestampsAndWatermarks(WatermarkStrategy
-						.<Tuple2<String, String>>forMonotonousTimestamps()
-						.withTimestampAssigner((x) -> new MyTimestampAssigner()))
-				.keyBy(pair -> pair.f0)
-				// .process(new KeyedProcessFunction<String, Tuple2<String, String>,
-				// Tuple2<String, String>>() {
+				// .assignTimestampsAndWatermarks(WatermarkStrategy
+				// 		.<Tuple2<String, String>>forMonotonousTimestamps()
+				// 		.withTimestampAssigner((x) -> new MyTimestampAssigner()))
+				// .keyBy(pair -> pair.f0)
+				// // .process(new KeyedProcessFunction<String, Tuple2<String, String>,
+				// // Tuple2<String, String>>() {
 
-				// @Override
-				// public void processElement(Tuple2<String, String> arg0,
-				// KeyedProcessFunction<String, Tuple2<String, String>, Tuple2<String,
-				// String>>.Context arg1,
-				// org.apache.flink.util.Collector<Tuple2<String, String>> arg2) throws
-				// Exception {
-				// arg2.collect(Tuple2.of(arg1.getCurrentKey(), arg1.timestamp().toString()));
-				// }
+				// // @Override
+				// // public void processElement(Tuple2<String, String> arg0,
+				// // KeyedProcessFunction<String, Tuple2<String, String>, Tuple2<String,
+				// // String>>.Context arg1,
+				// // org.apache.flink.util.Collector<Tuple2<String, String>> arg2) throws
+				// // Exception {
+				// // arg2.collect(Tuple2.of(arg1.getCurrentKey(), arg1.timestamp().toString()));
+				// // }
 
+				// // })
+				// // .keyBy(pair -> pair.f0)
+				// .process(new DropBootstrapping())
+				// .returns(new TypeHint<Tuple2<String, String>>() {
 				// })
-				// .keyBy(pair -> pair.f0)
-				.process(new DropBootstrapping())
-				.returns(new TypeHint<Tuple2<String, String>>() {
-				})
-				// .keyBy(pair -> pair.f0)
-				.filter(line -> (line.f1.startsWith("--")
-						|| (!line.f1.contains("Validation") && !line.f1.contains("ProposeSet")))
-						&& Utils.to(line.f1) != 3)
-				.map(line -> Tuple2.of(line.f0, line.f1.startsWith("--") ? line.f1.substring(3) : line.f1))
-				.returns(new TypeHint<Tuple2<String, String>>() {
-				})
-		// .sinkTo(sink)
+				// // .keyBy(pair -> pair.f0)
+				// .filter(line -> (line.f1.startsWith("--")
+				// 		|| (!line.f1.contains("Validation") && !line.f1.contains("ProposeSet")))
+				// 		&& Utils.to(line.f1) != 3)
+				// .map(line -> Tuple2.of(line.f0, line.f1.startsWith("--") ? line.f1.substring(3) : line.f1))
+				// .returns(new TypeHint<Tuple2<String, String>>() {
+				// })
 		;
 
 		// env.fromElements(0, 1, 2, 3, 4).sinkTo(sink);
@@ -258,19 +258,21 @@ public class DataStreamJob {
 
 		// Predicate p1 = new Predicate("Validation", "Validation", (pair) -> Utils.seq(pair.f0) + 1 == Utils.seq(pair.f1),
 		// 		"Validation seq -- +1, >3 --> Validation seq", 4);
-		IncompatibleLedgerPredicate p1 = new IncompatibleLedgerPredicate();
-		p1.apply(stream
-		.keyBy(new KeySelector<Tuple2<String,String>,Tuple2<String, Integer>>() {
 
-			@Override
-			public Tuple2<String, Integer> getKey(Tuple2<String, String> pair) throws Exception {
-				return Tuple2.of(pair.f0, Utils.to(pair.f1));
-			}
+		// IncompatibleLedgerPredicate p1 = new IncompatibleLedgerPredicate();
+		// p1.apply(stream
+		// .keyBy(new KeySelector<Tuple2<String,String>,Tuple2<String, Integer>>() {
+
+		// 	@Override
+		// 	public Tuple2<String, Integer> getKey(Tuple2<String, String> pair) throws Exception {
+		// 		return Tuple2.of(pair.f0, Utils.to(pair.f1));
+		// 	}
 			
-		})
-		)
-		.sinkTo(sink);
-		// stream.sinkTo(sink);
+		// })
+		// )
+		// .sinkTo(sink);
+
+		stream.sinkTo(sink);
 
 		// stream
 		// .filter(line -> !line.startsWith("--"))
