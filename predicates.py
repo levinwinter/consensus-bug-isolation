@@ -14,19 +14,35 @@ Message = Proposal | Validation
 # p_p_seq_eq: Assertion = (lambda l, l)
 
 class Assertion():
-    
+    """
+    Represents a comparison assertion between two message fields.
+
+    Uses __slots__ for memory efficiency and faster attribute access.
+    """
+    __slots__ = ['fieldL', 'fieldR', 'op']
+
     def __init__(self, fieldL: str, fieldR: str, op) -> None:
         self.fieldL = fieldL
         self.fieldR = fieldR
         self.op = op
-    
+
     def eval(self, l: Message, r: Message) -> bool:
         return self.op(getattr(l, self.fieldL), getattr(r, self.fieldR))
-    
+
     def __str__(self) -> str:
         return f'{self.fieldL} {self.op.__name__} {self.fieldR}'
 
 class Predicate:
+    """
+    Represents a predicate that checks for message patterns in consensus logs.
+
+    Format: "At least N messages of TypeL -> TypeR where <assertions>"
+
+    Uses __slots__ for memory efficiency since we create ~4,500 of these.
+    Note: observed and observed_true are now tracked externally via PredicateState
+    wrapper to avoid deep copying overhead.
+    """
+    __slots__ = ['typeL', 'typeR', 'threshold', 'assertions', 'observed', 'observed_true']
 
     def __init__(self, typeL: type, typeR: type, threshold: int, assertions: list[Assertion]) -> None:
         self.typeL = typeL
@@ -35,7 +51,7 @@ class Predicate:
         self.assertions = assertions
         self.observed = False
         self.observed_true = False
-    
+
     def eval(self, l: Message, r: Message):
         if self.observed_true or not (isinstance(l, self.typeL) and isinstance(r, self.typeR) and self.threshold <= len(l.peers)):
             return False
@@ -45,6 +61,6 @@ class Predicate:
                 return False
         self.observed_true = True
         return True
-    
+
     def __str__(self) -> str:
         return f'Predicate(at least {self.threshold} {self.typeL.__name__} -> {self.typeR.__name__} where {", ".join(map(str, self.assertions))})'
