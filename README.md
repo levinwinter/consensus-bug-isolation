@@ -36,7 +36,6 @@ Reads predicate observations directly from PRED annotations in validator logs an
 
 ```bash
 python3 scripts/analyze.py              # Print confusion matrix for all configurations
-python3 scripts/analyze.py cap 100      # Limit to first 100 runs per configuration
 ```
 
 Used by both approaches to evaluate prediction accuracy on failure modes (Incompatible, Insufficient, Agreement).
