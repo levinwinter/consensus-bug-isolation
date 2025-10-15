@@ -161,7 +161,13 @@ class LightweightReport:
         self.successful = successful
         self.name = name
 
-if __name__ == '__main__':
+def run_message_based_analysis():
+    """
+    Run message-based consensus-aware analysis pipeline.
+
+    Evaluates predicates on message pairs from validator logs and performs
+    statistical fault localization to identify failure-correlated predicates.
+    """
     # Discover all run directories in data folder
     paths = []
     for dirpath, _, filenames in os.walk("data"):
@@ -233,3 +239,7 @@ if __name__ == '__main__':
     # Phase 3: Perform statistical fault localization
     print("\nPhase 3: Isolating failure-causing predicates...")
     isolate(reports, aggregations=aggregation, stats_fn=stats)
+
+
+if __name__ == '__main__':
+    run_message_based_analysis()
