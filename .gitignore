@@ -1,1 +1,4 @@
+venv
+predicates-cache-*
+*.pickle
 __pycache__

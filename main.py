@@ -24,9 +24,9 @@ def to_report(path):
     aggregated = {}
     for i, results_per_node in enumerate(results):
         for result in results_per_node:
+            aggregated.setdefault(str(result), set())
             if result.observed_true:
-                result_str = str(result)
-                aggregated.setdefault(result_str, set()).add(i)
+                aggregated[str(result)].add(i)
     per_unl = {}
     for pred, peers in aggregated.items():
         # Use pre-computed frozensets instead of creating lists

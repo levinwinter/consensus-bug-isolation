@@ -133,5 +133,3 @@ def do_magic_skip_cache(x):
     with open(cache_path, 'w') as f:
         for predicate in local_predicates:
             f.write(f'{predicate.observed} {predicate.observed_true} {str(predicate)}\n')
-
-    return local_predicates
