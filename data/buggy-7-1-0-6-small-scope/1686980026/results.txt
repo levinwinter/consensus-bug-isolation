@@ -1,0 +1,37 @@
+process faults {3: ({4, 5, 6}, 698603768)}
+network faults {}
+{}
+0
+reason: flags
+[flag] Incompatible ledger <2023-Jun-17 05:34:41.117652073 UTC LedgerConsensus:WRN Not validating incompatible ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:34:41.292165815 UTC LedgerConsensus:WRN Not validating incompatible ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:34:41.415252217 UTC LedgerConsensus:WRN Not validating incompatible ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:34:53.122757883 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:34:53.298996548 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:34:53.411949149 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:34:58.128201356 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:34:58.306175660 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:34:58.422983343 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:02.136161893 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:02.315228701 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:02.435848611 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:05.140838051 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:05.321625000 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:05.441266878 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:08.144927072 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:08.327761940 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:08.452241169 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:11.151989101 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:11.333667937 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:11.459063200 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:14.155260788 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:14.342108611 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-17 05:35:14.463534326 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+done!

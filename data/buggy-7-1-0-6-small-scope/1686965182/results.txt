@@ -1,0 +1,26 @@
+process faults {3: ({0}, 25506322)}
+network faults {}
+{}
+0
+reason: flags
+[flag] Incompatible ledger <2023-Jun-17 01:27:11.701154891 UTC LedgerConsensus:WRN Not validating incompatible ledger>
+[flag] Incompatible ledger <2023-Jun-17 01:27:14.710866353 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Ledger 10 diverged and has insufficient support
+[flag] Ledger 11 diverged and has insufficient support
+[flag] Ledger 12 diverged and has insufficient support
+[flag] Ledger 13 diverged and has insufficient support
+[flag] Ledger 14 diverged and has insufficient support
+[flag] Ledger 15 diverged and has insufficient support
+[flag] Ledger 16 diverged and has insufficient support
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+done!
