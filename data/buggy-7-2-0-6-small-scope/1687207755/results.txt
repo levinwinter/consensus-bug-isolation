@@ -1,0 +1,15 @@
+process faults {4: ({1, 2}, 1102270585)}
+network faults {}
+{}
+0
+reason: flags
+[flag] Ledger 6 diverged and has insufficient support
+[flag] Ledger 7 diverged and has insufficient support
+[flag] Ledger 9 diverged and has insufficient support
+[flag] Ledger 10 diverged and has insufficient support
+[flag] Ledger 11 diverged and has insufficient support
+[flag] Ledger 12 diverged and has insufficient support
+[flag] Ledger 13 diverged and has insufficient support
+[flag] Ledger 14 diverged and has insufficient support
+[flag] Timeout after 10000 messages
+done!

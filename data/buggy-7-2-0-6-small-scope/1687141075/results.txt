@@ -1,0 +1,12 @@
+process faults {5: ({1, 4, 2}, 3834504404), 3: ({2, 5}, 752629413)}
+network faults {}
+{5: ("7467C9A121F672093352EB99A9D7DD5321016EF989F8E4F9FA3E74D5D48F7744", {3, 5, 4, 1, 0, 2, 6}), 12: ("D83EF2521317AFF2D24257799BC2B3FD8C2CEFA495B10590EED812637CD1771C", {2, 4, 1, 0, 3, 6, 5}), 10: ("93AD71F0BD22DC1798518C2CD2C2330AA7A66B575D3521E3A3DA89B4CAF36AE1", {0, 3, 6, 1, 4, 5, 2}), 7: ("7F3CA2F45243D30804E324C4BE8EC95E1D458E1F180CBAF4906402DCC6CC8C1A", {0, 2, 5, 3, 1, 4, 6}), 6: ("69D5CDC67D7FC3CE358950534B5B86C88024BBD02A3984DF3006A58BBF3421EC", {4, 5, 6, 1, 3, 0, 2}), 9: ("46DF49DDDF303DD267F98C4F36FC3E54A4774846EF927C354FE171E428695FCA", {4, 5, 3, 1, 6, 0, 2}), 11: ("7FE4C55877A29E7D1F9DA6676C71CBF90CB4379E048EAE11BE06EE55500EF918", {2, 0, 4, 1, 3, 6, 5}), 8: ("47A082AD8004D45A3501DABA3EAB7025DE547569C3F1DBB080EC3E8B756CD317", {3, 4, 1, 5, 2, 6, 0}), 13: ("0B8C9DE3383E4E473F8EFFCC8F2FEC47B48A87201B0FE6112E2ABDBCC6DE194E", {6, 2, 0, 5, 1, 3, 4})}
+7
+reason: all committed
+[flag] Incompatible ledger <2023-Jun-19 02:18:54.099084390 UTC LedgerConsensus:WRN Not validating incompatible ledger>
+[flag] Incompatible ledger <2023-Jun-19 02:18:57.105031406 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-19 02:19:11.134781527 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-19 02:19:14.138772158 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-19 02:19:17.147797186 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger < LedgerConsensus:WRN Not validating incompatible following ledger>
+done!
