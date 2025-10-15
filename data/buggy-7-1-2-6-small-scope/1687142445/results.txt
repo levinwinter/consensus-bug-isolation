@@ -1,0 +1,10 @@
+process faults {2: ({4, 1, 2}, 2667961535)}
+network faults {4: [{5, 0}, {2, 1}, {6, 3}, {4}], 2: [{0, 4}, {1}, {2, 6}, {3, 5}]}
+{}
+0
+reason: flags
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+done!

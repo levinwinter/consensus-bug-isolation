@@ -1,0 +1,14 @@
+process faults {2: ({2}, 2493612744)}
+network faults {6: [{3, 0}, {1, 5}, {2}, {4}, {6}], 5: [{0}, {5, 4, 1}, {2, 3}, {6}]}
+{}
+0
+reason: flags
+[flag] Ledger 6 diverged and has insufficient support
+[flag] Ledger 7 diverged and has insufficient support
+[flag] Ledger 8 diverged and has insufficient support
+[flag] Ledger 9 diverged and has insufficient support
+[flag] Ledger 10 diverged and has insufficient support
+[flag] Ledger 11 diverged and has insufficient support
+[flag] Ledger 12 diverged and has insufficient support
+[flag] Timeout after 10000 messages
+done!

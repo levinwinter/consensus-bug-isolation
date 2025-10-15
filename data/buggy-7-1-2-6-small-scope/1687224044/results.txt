@@ -1,0 +1,11 @@
+process faults {4: ({6, 2}, 2195995204)}
+network faults {5: [{0}, {3, 5, 4, 6, 1}, {2}], 3: [{1, 4, 0}, {2, 3, 5}, {6}]}
+{9: ("39771523E6B434A542FA94377888585178049ACD10EA7ACC99CF30367C8DB06E", {6, 1, 5, 0, 4, 2, 3}), 5: ("D574EA3129613772725CFCEC8E0BA13AAE7DB0A039DD4B65427287C9670E4E24", {2, 6, 1, 5, 4, 0, 3}), 8: ("2B0A8C6312C17BE1EB43BA19707B75822286C8345D7E0CAE8E8A1C42BD6D6343", {1, 2, 5, 0, 3, 4, 6}), 6: ("D4996A92415F2A48B64B5C38CF1979A382C575F0F163BF0A4061FC1C88E10E29", {0, 5, 1, 4, 3, 6, 2}), 10: ("A32C54FEADF00003548E55652E470F402858184F3A21F1E82D01464622A8E8C4", {3, 5, 0, 4, 1, 6, 2}), 7: ("73F1B43598B373BBEEC039DF03C221BF2A498D8856D6A2F20D51A9A5A89ABF06", {0, 1, 5, 2, 4, 6, 3})}
+7
+reason: all committed
+[flag] Incompatible ledger <2023-Jun-20 01:21:42.084236153 UTC LedgerConsensus:WRN Not validating incompatible ledger>
+[flag] Incompatible ledger <2023-Jun-20 01:21:42.980095739 UTC LedgerConsensus:WRN Not validating incompatible ledger>
+[flag] Incompatible ledger <2023-Jun-20 01:21:45.985983130 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-20 01:21:53.116636082 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-20 01:21:58.125812616 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+done!

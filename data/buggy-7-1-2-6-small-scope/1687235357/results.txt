@@ -1,0 +1,26 @@
+process faults {3: ({5, 6}, 1403429352)}
+network faults {4: [{4, 0, 1, 2, 5}, {3}, {6}], 7: [{6, 0}, {1, 4}, {5, 2}, {3}]}
+{}
+0
+reason: flags
+[flag] Incompatible ledger <2023-Jun-20 04:30:11.660408848 UTC LedgerConsensus:WRN Not validating incompatible ledger>
+[flag] Incompatible ledger <2023-Jun-20 04:30:11.687087402 UTC LedgerConsensus:WRN Not validating incompatible ledger>
+[flag] Incompatible ledger <2023-Jun-20 04:30:22.614165803 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-20 04:30:22.623959205 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-20 04:30:28.627142005 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-20 04:30:28.640075460 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-20 04:30:31.634694003 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-20 04:30:31.648199468 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-20 04:30:34.641115513 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-20 04:30:34.652763173 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-20 04:30:52.702225989 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-20 04:30:52.717643479 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <2023-Jun-20 04:30:57.709963251 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Incompatible ledger <30:57.725643856 UTC LedgerConsensus:WRN Not validating incompatible following ledger>
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+[flag] Timeout after 10000 messages
+done!
